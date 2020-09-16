@@ -10,8 +10,8 @@ import CancelConfirmButtons from '../CancelConfirmButtons'
 const Drawer = ({
   anchor,
   children,
-  isOpen,
   title,
+  isOpen,
   onCancelClick,
   onCloseDrawerClick,
   onConfirmClick
@@ -29,8 +29,8 @@ const Drawer = ({
       anchor={anchor}
       classes={{ paper: classes.drawerPaper }}
       ModalProps={{ onBackdropClick: onCloseDrawerClick }}
-      PaperProps={{ variant: 'outlined' }}
       open={isOpen}
+      PaperProps={{ variant: 'outlined' }}
     >
       <div css={titleLayoutCss}>
         <IconButton disableRipple onClick={onCloseDrawerClick}>
