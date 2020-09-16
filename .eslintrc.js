@@ -8,7 +8,9 @@ module.exports = {
     'plugin:react/recommended'
   ],
   'globals': {
-    'module': true
+    '__dirname': true,
+    'module': true,
+    'require': true
   },
   'parserOptions': {
     'ecmaFeatures': {
@@ -29,7 +31,7 @@ module.exports = {
       'noSortAlphabetically': false,
       'reservedFirst': true
     }],
-    'no-console': 2,
+    'no-console': 1,
     'react/no-find-dom-node': 1,
     'react/no-unused-prop-types': 0,
     'react/prop-types': 0,
