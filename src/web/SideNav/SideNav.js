@@ -11,6 +11,7 @@ const SideNav = () => {
   return (
     <div css={sideNavLayoutCss}>
       <div css={flexedColumn}>
+        asdf;
         <Link to="/"><BarChartIcon /></Link>
         <Link to="/people"><PeopleAltIcon /></Link>
         <Link to="/features"><ListAltIcon /></Link>
