@@ -4,9 +4,9 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "start": "NODE_ENV=development webpack-dev-server --progress --colors --port 3000 --hot",
-    "lint": "eslint src/**/*.js",
-    "build": "NODE_ENV=production webpack --progress --colors"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "lint": "eslint src/**/*.js"
   },
   "dependencies": {
     "@apollo/client": "^3.1.4",
