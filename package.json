@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --port 3000 --mode development --hot",
     "lint": "eslint src/**/*.js",
-    "build": "webpack"
+    "build": "webpack echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p"
   },
   "dependencies": {
     "@apollo/client": "^3.1.4",
