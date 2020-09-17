@@ -11,14 +11,13 @@ const SideNav = () => {
   return (
     <div css={sideNavLayoutCss}>
       <div css={flexedColumn}>
-        asdf;
-        <Link to="/"><BarChartIcon /></Link>
-        <Link to="/people"><PeopleAltIcon /></Link>
-        <Link to="/features"><ListAltIcon /></Link>
+        <Link css={linkCss} to="/"><BarChartIcon /></Link>
+        <Link css={linkCss} to="/people"><PeopleAltIcon /></Link>
+        <Link css={linkCss} to="/features"><ListAltIcon /></Link>
       </div>
       <div css={flexedColumn}>
-        <Link to="/settings"><SettingsIcon /></Link>
-        <Link to="/profile"><PersonIcon /></Link>
+        <Link css={linkCss} to="/settings"><SettingsIcon /></Link>
+        <button css={linkCss}><PersonIcon /></button>
       </div>
     </div>
   )
@@ -28,6 +27,10 @@ const flexedColumn = css`
   display: flex;
   flex-direction: column;
   align-items: center;
+`
+
+const linkCss = css`
+  color: black;
 `
 
 const sideNavLayoutCss = css`

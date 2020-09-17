@@ -6,6 +6,13 @@ body {
   margin: 0;
 }
 
+button {
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+}
+
 h1 {
   font-family: 'Merriweather', serif;
 }
