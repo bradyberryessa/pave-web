@@ -1,18 +1,31 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import { func, string } from 'prop-types'
+import { bool, func, string } from 'prop-types'
 import Button from '@material-ui/core/Button'
 
-const CancelConfirmButtons = ({ cancelText, confirmText, onCancelClick, onConfirmClick }) => {
+const CancelConfirmButtons = ({
+  cancelText,
+  confirmText,
+  isConfirmDisabled,
+  onCancelClick,
+  onConfirmClick
+}) => {
   return (
     <div css={buttonLayoutCss}>
       <div css={buttonMarginCss}>
-        <Button onClick={onCancelClick} disableElevation disableRipple>
+        <Button disableElevation disableRipple onClick={onCancelClick}>
           {cancelText}
         </Button>
       </div>
       <div css={buttonMarginCss}>
-        <Button onClick={onConfirmClick} disableElevation disableRipple variant="contained" color="primary">
+        <Button
+          disableElevation
+          disableRipple
+          color="primary"
+          disabled={isConfirmDisabled}
+          variant="contained"
+          onClick={onConfirmClick}
+        >
           {confirmText}
         </Button>
       </div>
@@ -35,13 +48,14 @@ const buttonMarginCss = css`
 CancelConfirmButtons.propTypes = {
   cancelText: string,
   confirmText: string,
+  isConfirmDisabled: bool,
   onCancelClick: func,
   onConfirmClick: func
 }
 
 CancelConfirmButtons.defaultProps = {
-  cancelText: "Cancel",
-  confirmText: "Save",
+  cancelText: 'Cancel',
+  confirmText: 'Save',
   onCancelClick: () => { },
   onConfirmClick: () => { }
 }

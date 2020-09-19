@@ -8,26 +8,32 @@ import TableContainer from '@material-ui/core/TableContainer'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
-import Drawer from '../../../Drawer'
+import { func } from 'prop-types'
+import FormattedDate from '../../../utils/FormattedDate'
+import PeopleDrawer from '../PeopleDrawer/PeopleDrawer'
 
 const GET_PEOPLE = gql`
-  query GetPeople {
+  query {
     users {
       id
-      name
+      firstName
+      lastName
       email
+      createdAt
     }
   }
 `
 
 const PeopleTable = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [selectedUserId, setSelectedUserId] = useState(null)
   const { data } = useQuery(GET_PEOPLE)
   const users = data?.users ?? []
 
-  console.log('users', users)
-
-  const onRowClick = () => setIsOpen(true)
+  const onRowClick = id => {
+    setSelectedUserId(id)
+    setIsOpen(true)
+  }
 
   return (
     <>
@@ -42,27 +48,24 @@ const PeopleTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {users.map(({ id, name, email }) => (
-              <TableRow key={id} hover onClick={onRowClick}>
-                <TableCell>{name}</TableCell>
+            {users.map(({ id, firstName, lastName, email, createdAt, isAdmin }) => (
+              <TableRow key={id} hover onClick={() => onRowClick(id)}>
+                <TableCell>{`${firstName} ${lastName}`}</TableCell>
                 <TableCell>{email}</TableCell>
-                <TableCell>Admin</TableCell>
-                <TableCell>02/04/2020</TableCell>
+                <TableCell>{isAdmin && 'Admin'}</TableCell>
+                <TableCell>{<FormattedDate value={createdAt} />}</TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-      <Drawer
-        isOpen={isOpen}
-        title="Edit person details"
-        onCancelClick={() => setIsOpen(false)}
-        onCloseDrawerClick={() => setIsOpen(false)}
-      >
-        Testing this out
-      </Drawer>
+      {isOpen && <PeopleDrawer personId={selectedUserId} onCloseDrawerClick={() => setIsOpen(false)} />}
     </>
   )
+}
+
+PeopleTable.propTypes = {
+  onRowClick: func
 }
 
 export default PeopleTable

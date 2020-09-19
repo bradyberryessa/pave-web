@@ -1,0 +1,8 @@
+fragment User {
+  id
+  firstName
+  lastName
+  email
+  isAdmin
+  createdAt
+}

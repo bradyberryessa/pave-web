@@ -5,16 +5,13 @@ import MaterialDrawer from '@material-ui/core/Drawer'
 import { makeStyles } from '@material-ui/core/styles'
 import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
-import CancelConfirmButtons from '../CancelConfirmButtons'
 
 const Drawer = ({
   anchor,
   children,
   title,
   isOpen,
-  onCancelClick,
-  onCloseDrawerClick,
-  onConfirmClick
+  onCloseDrawerClick
 }) => {
   const useStyles = makeStyles(() => ({
     drawerPaper: {
@@ -36,16 +33,10 @@ const Drawer = ({
         <IconButton disableRipple onClick={onCloseDrawerClick}>
           <CloseIcon />
         </IconButton>
-        <span css={titleMarginCss}>{title}</span>
+        <div css={titleMarginCss}>{title}</div>
       </div>
       <div css={contentLayoutCss}>
         {children}
-      </div>
-      <div>
-        <CancelConfirmButtons
-          onCancelClick={onCancelClick}
-          onConfirmClick={onConfirmClick}
-        />
       </div>
     </MaterialDrawer>
   )
@@ -71,16 +62,12 @@ Drawer.propTypes = {
   children: node,
   isOpen: bool,
   title: node,
-  onCancelClick: func,
-  onCloseDrawerClick: func,
-  onConfirmClick: func
+  onCloseDrawerClick: func
 }
 
 Drawer.defaultProps = {
   anchor: 'right',
-  onCancelClick: () => { },
-  onCloseDrawerClick: () => { },
-  onConfirmClick: () => { }
+  onCloseDrawerClick: () => { }
 }
 
 export default Drawer

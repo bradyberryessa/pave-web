@@ -5,7 +5,6 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    // path: __dirname,
     filename: 'index_bundle.js',
     publicPath: '/'
   },
@@ -15,7 +14,16 @@ module.exports = {
   module: {
     rules: [
       { test: /\.(js)$/, use: 'babel-loader' },
-      { test: /\.css$/, use: ['style-loader', 'css-loader'] }
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'graphql-tag/loader'
+          },
+        ]
+      }
     ]
   },
   mode: 'development',
