@@ -4,13 +4,17 @@ import People from './web/People'
 import Settings from './web/Settings'
 import Profile from './web/Profile'
 import Features from './web/Features'
+import Login from './web/Login'
+import Register from './web/Register'
 
 const routes = (
   <Switch>
-    <Route path='/people' component={People} />
-    <Route path='/settings' component={Settings} />
-    <Route path='/profile' component={Profile} />
-    <Route path='/features' component={Features} />
+    <Route component={Login} path='/login' />
+    <Route component={Register} path='/register' />
+    <Route component={People} path='/people' />
+    <Route component={Settings} path='/settings' />
+    <Route component={Profile} path='/profile' />
+    <Route component={Features} path='/features' />
   </Switch>
 )
 

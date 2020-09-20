@@ -8,6 +8,7 @@ const TextField = ({
   helperText,
   id,
   label,
+  type,
   value,
   variant,
   onBlur,
@@ -21,6 +22,7 @@ const TextField = ({
         helperText={helperText}
         id={id}
         label={label}
+        type={type}
         value={value}
         variant={variant}
         onBlur={onBlur}

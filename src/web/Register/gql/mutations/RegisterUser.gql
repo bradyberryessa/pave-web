@@ -1,0 +1,3 @@
+mutation RegisterUser($input: RegisterInput!) {
+  register(input: $input)
+}
