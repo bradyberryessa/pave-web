@@ -4,7 +4,7 @@ import LoginUser from './gql/mutations/LoginUser.gql'
 import TextField from '../Form/TextField'
 import Button from '@material-ui/core/Button'
 import validate from 'validate.js'
-import { useHistory } from 'react-router-dom'
+import { login } from '../../../authService'
 
 const initialFormValues = {
   email: '',
@@ -25,11 +25,10 @@ const constraints = {
   }
 }
 
-const Login = () => {
+const Login = ({ history }) => {
   const [formValues, setFormValues] = useState(initialFormValues)
   const [formErrors, setFormErrors] = useState({})
   const [loginUser] = useMutation(LoginUser)
-  const history = useHistory()
 
   const { email, password } = formValues
 
@@ -55,7 +54,11 @@ const Login = () => {
       }
     }
     loginUser({ variables }).then(({ data }) => {
-      if (data.loginUser) return history.push('/')
+      const accessToken = data?.loginUser
+      if (data.loginUser) {
+        login(accessToken)
+        return history.push('/')
+      }
       // show error that the password was wrong
     })
   }

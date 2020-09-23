@@ -87,7 +87,6 @@ const Register = () => {
   const emailErrors = formErrors?.email
   const passwordErrors = formErrors?.password
   const confirmPasswordErrors = formErrors?.confirmPassword
-  console.log('confirmPasswordErrors', confirmPasswordErrors)
 
   const hasErrors = !!validate(formValues, constraints)
 

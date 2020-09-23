@@ -29,8 +29,6 @@ const PeopleTable = () => {
   const [selectedUserId, setSelectedUserId] = useState(null)
   const { data } = useQuery(GET_PEOPLE)
   const users = data?.users ?? []
-  console.log('users', users)
-  console.log('data', data)
 
   const onRowClick = id => {
     setSelectedUserId(id)
